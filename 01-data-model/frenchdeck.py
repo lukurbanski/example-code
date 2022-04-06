@@ -15,3 +15,31 @@ class FrenchDeck:
 
     def __getitem__(self, position):
         return self._cards[position]
+
+deck = FrenchDeck()
+
+print(deck[-1])
+
+# from random import choice
+
+# print(choice(deck))
+
+# print(len(deck))
+
+for card in reversed(deck): 
+    print(card)
+
+suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+
+def spades_high(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(suit_values) + suit_values[card.suit]
+
+for card in sorted(deck, key = spades_high):
+    print(card)
+
+# cardlist = [card for card in deck if card.rank == '3']
+# spades_high(cardlist)
+
+card1 = Card('4', 'hearts')
+print(spades_high(card1))
